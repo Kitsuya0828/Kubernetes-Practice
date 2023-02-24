@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: sample-rs
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: sample-app # 一致
+  template:
+    metadata:
+      labels:
+        app: sample-app # 一致
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:1.16
