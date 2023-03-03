@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-gke
+spec:
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+      - name: hello-app
+        image: asia-northeast1-docker.pkg.dev/langsmith-sandbox-202302/hello-repo/helloworld-gke
+        ports:
+        - containerPort: 8080
+        env:
+          - name: PORT
+            value: "8080"
